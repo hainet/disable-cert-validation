@@ -1,0 +1,3 @@
+rest-template:
+  connect-timeout: 2
+  read-timeout: 15
