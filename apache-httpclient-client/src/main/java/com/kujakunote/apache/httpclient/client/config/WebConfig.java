@@ -8,7 +8,6 @@ import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustAllStrategy;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
@@ -64,6 +63,7 @@ public class WebConfig {
                 .register("https", SSLConnectionSocketFactory.getSocketFactory())
                 .build();
     }
+
     @Bean
     @Profile("!prod")
     public Registry<ConnectionSocketFactory> devConnectionSocketFactoryRegistry() {
