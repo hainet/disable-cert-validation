@@ -61,6 +61,7 @@ public class WebConfig {
 
         final SSLContext sslContext = SSLContext.getInstance("TLS");
         sslContext.init(null, trustManagers, new SecureRandom());
+
         return new OkHttpClient.Builder()
                 .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
                 .hostnameVerifier((str, sslSession) -> true)

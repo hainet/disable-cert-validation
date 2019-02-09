@@ -49,6 +49,7 @@ public class WebConfig {
         final PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
         connectionManager.setDefaultMaxPerRoute(maxTotal);
         connectionManager.setMaxTotal(maxTotal);
+
         return HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .build();
@@ -71,7 +72,9 @@ public class WebConfig {
             final SSLContext sslContext = SSLContexts.custom()
                     .loadTrustMaterial(new TrustAllStrategy())
                     .build();
+
             final SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+
             return RegistryBuilder.<ConnectionSocketFactory>create()
                     .register("http", PlainConnectionSocketFactory.getSocketFactory())
                     .register("https", sslConnectionSocketFactory)
